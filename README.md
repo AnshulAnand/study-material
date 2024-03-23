@@ -1,1 +1,1 @@
-# NoteNet
+# Study material
