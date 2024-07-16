@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/_theme.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="nav">
+      <div class="container">
+        <h1>Study Material</h1>
+        <ul>
+          <li><a href="/pro" class="notes">PRO</a></li>
+          <li>
+            <button id="theme-btn">
+              <img src="/images/moon-stars.svg" alt="" height="18" width="18" />
+            </button>
+          </li>
+          <% if (data && data.avatar) { %>
+          <li class="avatar">
+            <div style="background-image: url('<%- data.avatar %>')"></div>
+          </li>
+          <% } else { %>
+          <li><a href="/auth">Sign in</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+    <!-- Hero section -->
+    <section class="hero-section">
+      <div class="container">
+        <div>
+          <h1>Study Material</h1>
+          <p>A better way to prepare for exams.</p>
+          <button>
+            <a href="#notes-section">Go to notes</a>
+          </button>
+        </div>
+        <div>
+          <img src="/images/hero.svg" alt="" />
+        </div>
+      </div>
+      <div class="release-notes">
+        <div>
+          <h2>Release Notes</h2>
+          <ul>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+              qui.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+              qui.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+              qui.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+              qui.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+              qui.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Notes section -->
+    <section class="notes-section" id="notes-section">
+      <div class="container">
+        <div class="main">
+          <h1>Notes</h1>
+          <ul class="cards">
+            <li class="cards_item">
+              <div class="card">
+                <div class="card_image">
+                  <img src="https://picsum.photos/500/300/?image=10" />
+                </div>
+                <div class="card_content">
+                  <h2 class="card_title">CSDA</h2>
+                  <p class="card_text">All notes of CSDA</p>
+                  <a href="/csda" class="btn card_btn">Get Notes</a>
+                </div>
+              </div>
+            </li>
+            <li class="cards_item">
+              <div class="card">
+                <div class="card_image">
+                  <img src="https://picsum.photos/500/300/?image=5" />
+                </div>
+                <div class="card_content">
+                  <h2 class="card_title">CSIOT</h2>
+                  <p class="card_text">All notes of CSIOT</p>
+                  <a href="/csiot" class="btn card_btn">Get Notes</a>
+                </div>
+              </div>
+            </li>
+            <li class="cards_item">
+              <div class="card">
+                <div class="card_image">
+                  <img src="https://picsum.photos/500/300/?image=11" />
+                </div>
+                <div class="card_content">
+                  <h2 class="card_title">ECAM</h2>
+                  <p class="card_text">All notes of ECAM</p>
+                  <a href="/ecam" class="btn card_btn">Get Notes</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="testimonial-section">
+      <div class="container">
+        <h2>What they say</h2>
+        <div>
+          <div>
+            <p>
+              I've been using this website for my engineering studies and I must
+              say it's been a life saver! The study materials are
+              well-organized, easy to navigate and cover all the essential
+              topics in my curriculum. Thanks to this website, I've been able to
+              stay on top of my coursework and achieve academic success.
+            </p>
+          </div>
+          <div>
+            <p>
+              I stumbled upon this website while searching for study materials
+              for my exams, and I'm so glad I did! The resources provided here
+              are of top quality. I've noticed a significant improvement in my
+              grades since I started using this platform.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>
+              As a busy engineering student, having access to quality study
+              materials online has been a game-changer for me. This webste
+              offers a wide range of resources, from lecture notes to practice
+              problems, that have greatly enhanced my learning experience. I'm
+              grateful for the convenience and effectiveness of this platform.
+            </p>
+          </div>
+          <div>
+            <p>
+              I can't thank this website enough for the invaluable study
+              material it offers. The practice quizzes and exam prep resources
+              have been instrumental in helping me ace my engineering exams. The
+              convenience of accessing these materials online has made studying
+              more efficient and productive. Highly recommended for all
+              engineering students!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>Copyright &copy; All rights reserved</p>
+        <p>Contact: studymaterial@gmail.com</p>
+      </div>
+    </footer>
+
+    <script src="/js/_theme.js"></script>
+  </body>
+</html>

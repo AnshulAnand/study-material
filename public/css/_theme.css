@@ -1,0 +1,18 @@
+body {
+  --navbar-background: #fff;
+  --background: #e9eef3;
+  --release-notes-background: #fff;
+  --font-color: #000;
+
+  color: var(--font-color);
+  transition: 1s;
+}
+
+body.dark {
+  --navbar-background: #2f3136;
+  --background: #202225;
+  --release-notes-background: #2f3136;
+  --font-color: #fff;
+
+  color: var(--font-color);
+}

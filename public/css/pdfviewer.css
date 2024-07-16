@@ -1,0 +1,55 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--navbar-background);
+}
+
+.nav {
+  background-color: var(--background);
+}
+
+.container {
+  max-width: 1200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+}
+
+.nav button {
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: transparent;
+}
+
+.nav button img {
+  width: 20px;
+  color: white;
+}
+
+.nav button:hover {
+  background-color: #000;
+}
+
+.nav .buttons {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.canvas-container {
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+canvas {
+  display: flex;
+  margin: 10px auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/pdfviewer.css" />
+    <link rel="stylesheet" href="/css/_theme.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container">
+        <div class="buttons">
+          <button class="prev" onclick="onPrevPage()">
+            <img src="/images/arrow-left-solid.svg" alt="" />
+          </button>
+          <button class="next" onclick="onNextPage()">
+            <img src="/images/arrow-right-solid.svg" alt="" />
+          </button>
+          <button class="zoom-in" onclick="zoomIn()">
+            <img src="/images/magnifying-glass-plus-solid.svg" alt="" />
+          </button>
+          <button class="zoom-out" onclick="zoomOut()">
+            <img src="/images/magnifying-glass-minus-solid.svg" alt="" />
+          </button>
+        </div>
+        <div class="pages">
+          <span>Page:</span>
+          <span id="page_num">-</span>
+          <span>/</span>
+          <span id="page_count">-</span>
+        </div>
+      </div>
+    </nav>
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="/js/_theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.min.js"></script>
+    <script>
+      // ignore syntax error by VS Code
+      const id = <%- data.id %>
+
+      var pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1,
+        canvas = document.getElementById('canvas'),
+        ctx = canvas.getContext('2d')
+
+      function renderPage(num) {
+        pageRendering = true
+        pdfDoc.getPage(num).then(page => {
+          var viewport = page.getViewport({ scale: scale })
+          canvas.height = viewport.height
+          canvas.width = viewport.width
+
+          var renderContext = {
+            canvasContext: ctx,
+            viewport: viewport,
+          }
+          var renderTask = page.render(renderContext)
+          renderTask.promise.then(() => {
+            pageRendering = false
+            if (pageNumPending != null) {
+              renderPage(pageNumPending)
+              pageNumPending = null
+            }
+          })
+        })
+        document.getElementById('page_num').textContent = num
+      }
+
+      function queueRenderPage(num) {
+        if (pageRendering) pageNumPending = num
+        else renderPage(num)
+      }
+
+      function onPrevPage() {
+        if (pageNum <= 1) return
+        pageNum--
+        queueRenderPage(pageNum)
+      }
+
+      function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) return
+        pageNum++
+        queueRenderPage(pageNum)
+      }
+
+      function zoomOut() {
+        scale -= 0.1
+        renderPage(pageNum)
+      }
+
+      function zoomIn() {
+        scale += 0.1
+        renderPage(pageNum)
+      }
+
+      pdfjsLib.getDocument(`/documents/${id}.pdf`).promise.then(doc => {
+        pdfDoc = doc
+        document.getElementById('page_count').textContent = doc.numPages
+        renderPage(pageNum)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,299 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-section {
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.hero-section > .container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0px;
+}
+
+.hero-section > .container div {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.hero-section > .container div h1 {
+  font-size: calc(3vw + 3vh + 2vmin);
+}
+
+.hero-section > .container div p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.hero-section > .container div button {
+  background-color: inherit;
+  border: 5px solid #48c78e;
+  border-radius: 100px;
+  padding: 10px 20px;
+}
+
+.hero-section > .container div button:hover {
+  background-color: #48c78e;
+  color: #fff !important;
+}
+
+.hero-section > .container div a {
+  font-weight: 700;
+  color: #48c78e;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.hero-section > .container div a:hover {
+  background-color: #48c78e;
+  color: #fff !important;
+}
+
+.hero-section > .container div img {
+  width: 100%;
+}
+
+.avatar > div {
+  width: 44px; /*width of your image*/
+  height: 44px; /*height of your image*/
+  margin: 0; /* If you want no margin */
+  padding: 0; /*if your want to padding */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  border-radius: 10px;
+}
+
+.avatar img {
+  position: absolute;
+  object-fit: cover;
+}
+
+.release-notes {
+  padding-block: 20px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.release-notes > div {
+  border-radius: 3px;
+  width: calc(100vw - 40px);
+  padding: 20px;
+  background-color: var(--release-notes-background);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.release-notes > div > h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.release-notes > div > ul {
+  padding: 20px 30px;
+}
+
+.release-notes > div > ul li {
+  padding-block: 7px;
+}
+
+.notes-section {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notes-section > .container {
+  max-width: 1200px;
+  padding-block: 70px;
+}
+
+.notes-section > .container .main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.notes-section > .container .main h1 {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.notes-section > .container .main img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.notes-section > .container .main .btn {
+  color: var(--font-color);
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid var(--background);
+  background: transparent;
+  text-decoration: none;
+  text-align: center;
+}
+
+.notes-section > .container .main .btn:hover {
+  background-color: var(--background);
+}
+
+.notes-section > .container .main .cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notes-section > .container .main .cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.notes-section > .container .main .card {
+  background-color: var(--navbar-background);
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.notes-section > .container .main .card_content {
+  padding: 1rem;
+  background-color: var(--navbar-background);
+}
+
+.notes-section > .container .main .card_title {
+  color: var(--font-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+  text-align: center;
+}
+
+.notes-section > .container .main .card_text {
+  color: var(--font-color);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.testimonial-section {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.testimonial-section > .container {
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.testimonial-section > .container > h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.testimonial-section > .container > div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px;
+}
+
+.testimonial-section > .container > div > div {
+  background-color: var(--navbar-background);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-section > .container > div > div > p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+footer {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 50px;
+}
+
+footer > .container {
+  max-width: 1200px;
+  text-align: center;
+}
+
+footer > .container > p {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .hero-section > .container {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .hero-section > .container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .testimonial-section > .container > div {
+    flex-direction: column;
+  }
+}
