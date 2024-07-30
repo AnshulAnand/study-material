@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+body {
+  padding: 10px 20px;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: calc(2.5vw + 2.5vh + 2vmin);
+  color: var(--font-color);
+}
+
+div {
+  max-width: 1000px;
+  padding: 10px 20px;
+  background-color: var(--release-notes-background);
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+div h2 {
+  margin-bottom: 20px;
+}
+
+div h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+div p {
+  text-align: right;
+}

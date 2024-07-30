@@ -1,5 +1,9 @@
 const asyncHandler = require('express-async-handler')
 
+module.exports.releaseNotes = asyncHandler(async (req, res) => {
+  res.render('release-notes')
+})
+
 module.exports.semesters = asyncHandler(async (req, res) => {
   const branch = req.params.branch
   data = { branch: branch }
@@ -8,10 +12,12 @@ module.exports.semesters = asyncHandler(async (req, res) => {
 })
 
 module.exports.semester = asyncHandler(async (req, res) => {
+  const branch = req.params.branch
   const sem = req.params.sem
   data = { sem: sem }
   console.log({ data })
-  res.render(`csda/${sem}/index`)
+  res.render(`${branch}/${sem}/index`)
+  // res.render(`csda/${sem}/index`)
 })
 
 module.exports.subject = asyncHandler(async (req, res) => {

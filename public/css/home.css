@@ -33,7 +33,7 @@ html {
 }
 
 .hero-section > .container div h1 {
-  font-size: calc(3vw + 3vh + 2vmin);
+  font-size: calc(2.5vw + 2.5vh + 2vmin);
 }
 
 .hero-section > .container div p {
@@ -112,6 +112,21 @@ html {
 
 .release-notes > div > ul li {
   padding-block: 7px;
+}
+
+.release-notes > div > ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.release-notes #see-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.release-notes #see-more-btn a {
+  color: inherit;
 }
 
 .notes-section {
