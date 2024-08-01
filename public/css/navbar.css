@@ -23,6 +23,11 @@
   padding: 10px 0px;
 }
 
+.nav .container h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav ul {
   display: flex;
   justify-content: space-between;

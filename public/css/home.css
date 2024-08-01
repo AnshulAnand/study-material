@@ -299,6 +299,9 @@ footer > .container > p {
     flex-direction: column;
     gap: 50px;
   }
+  .hero-section > .container div p {
+    text-align: center;
+  }
   .hero-section > .container > div {
     display: flex;
     flex-direction: column;

@@ -85,3 +85,29 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
     })
     .redirect('/')
 })
+
+module.exports.logoutUser = asyncHandler(async (req, res) => {
+  const { userId } = req.user
+
+  if (!userId) {
+    res.status(400).json({ message: `User with ID: ${userId} not found` })
+    return
+  }
+
+  const cookies = req.cookies
+
+  if (!cookies?.jwt) {
+    res.sendStatus(204)
+    return
+  }
+
+  const foundUser = await UserModel.findById(userId).exec()
+
+  if (!foundUser) {
+    res.clearCookie('jwt', { httpOnly: true })
+    res.sendStatus(204)
+    return
+  }
+
+  res.clearCookie('jwt', { httpOnly: true }).redirect('/').sendStatus(204)
+})

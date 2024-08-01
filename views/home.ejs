@@ -18,7 +18,7 @@
     <!-- Navbar -->
     <nav class="nav">
       <div class="container">
-        <h1>Study Material</h1>
+        <h1><a href="/">Study Material</a></h1>
         <ul>
           <li><a href="/pro" class="notes">PRO</a></li>
           <li>
@@ -30,6 +30,7 @@
           <li class="avatar">
             <div style="background-image: url('<%- data.avatar %>')"></div>
           </li>
+          <li><a href="/auth/logout">Logout</a></li>
           <% } else { %>
           <li><a href="/auth">Sign in</a></li>
           <% } %>
