@@ -20,7 +20,13 @@
       <div class="container">
         <h1><a href="/">Study Material</a></h1>
         <ul>
-          <li><a href="/pro" class="notes">PRO</a></li>
+          <li>
+            <% if (data && data.payment) { %>
+            <a href="#" class="notes"><%- 'ACTIVE' %></a>
+            <% } else { %>
+            <a href="/pro" class="notes"><%- 'PRO' %></a>
+            <% } %>
+          </li>
           <li>
             <button id="theme-btn">
               <img src="/images/moon-stars.svg" alt="" height="18" width="18" />

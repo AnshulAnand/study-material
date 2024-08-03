@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dayjs": "^1.11.11",
     "ejs": "^3.1.9",
@@ -19,7 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.3",
     "pino": "^9.1.0",
-    "pino-pretty": "^11.0.0"
+    "pino-pretty": "^11.0.0",
+    "razorpay": "^2.9.4"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",

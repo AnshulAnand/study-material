@@ -14,6 +14,7 @@ body {
     rgba(253, 187, 45, 1) 100%
   );
   background-repeat: no-repeat;
+  padding-inline: 10px;
 }
 
 .container {
@@ -61,7 +62,14 @@ body {
   font-size: 20px;
 }
 
-.hero > a {
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pay {
   text-decoration: none;
   background-color: rgb(253, 146, 164);
   color: white;
@@ -72,8 +80,10 @@ body {
   padding: 10px 0;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+  font-size: large;
 }
 
-.hero > a:hover {
+#pay:hover {
   background-color: rgb(248, 133, 153);
 }

@@ -109,5 +109,5 @@ module.exports.logoutUser = asyncHandler(async (req, res) => {
     return
   }
 
-  res.clearCookie('jwt', { httpOnly: true }).redirect('/').sendStatus(204)
+  res.clearCookie('jwt', { httpOnly: true }).redirect('/')
 })

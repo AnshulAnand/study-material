@@ -8,7 +8,9 @@ const errorHandler = (err, req, res, next) => {
   logEvents(`${err.stack}`, 'logs.txt')
   const status = res.statusCode ? res.statusCode : 500 // server error
   res.status(status)
-  res.json({ message: err.message })
+  res.render('404')
+  // if (status === 404) res.render('404')
+  // else res.json({ message: err.message })
   next()
 }
 
