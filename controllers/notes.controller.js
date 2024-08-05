@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler')
 
-module.exports.releaseNotes = asyncHandler(async (req, res) => {
-  res.render('release-notes')
+module.exports.events = asyncHandler(async (req, res) => {
+  res.render('events')
 })
 
 module.exports.semesters = asyncHandler(async (req, res) => {

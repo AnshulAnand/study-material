@@ -1,4 +1,6 @@
 .env
 logs
+.test.env
+.env.test
 node_modules
 public/documents

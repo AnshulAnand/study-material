@@ -15,6 +15,7 @@ body {
   );
   background-repeat: no-repeat;
   padding-inline: 10px;
+  padding-top: 20px;
 }
 
 .container {
@@ -24,7 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
   gap: 20px;
   text-align: center;
 }
@@ -86,4 +87,18 @@ form {
 
 #pay:hover {
   background-color: rgb(248, 133, 153);
+}
+
+.back {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 10px 15px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+}
+
+.back:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

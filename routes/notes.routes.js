@@ -4,11 +4,11 @@ const {
   semesters,
   semester,
   subject,
-  releaseNotes,
+  events,
 } = require('../controllers/notes.controller')
 
 router
-  .get('/release-notes', releaseNotes)
+  .get('/events', events)
   .get('/:branch/:sem/:subject', subject)
   .get('/:branch/:sem', semester)
   .get('/:branch', semesters)

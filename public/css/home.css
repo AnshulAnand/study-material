@@ -85,47 +85,52 @@ html {
   object-fit: cover;
 }
 
-.release-notes {
-  padding-block: 20px;
+.events {
+  margin-top: 50px;
+  padding-inline: 20px;
   max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.release-notes > div {
+.events > div {
   border-radius: 3px;
   width: calc(100vw - 40px);
-  padding: 20px;
+  padding: 40px 20px;
   background-color: var(--release-notes-background);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.release-notes > div > h2 {
-  font-size: 24px;
+.events > div > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.release-notes > div > ul {
+.events > div > ul {
   padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.release-notes > div > ul li {
+.events > div > ul li {
   padding-block: 7px;
 }
 
-.release-notes > div > ul li a {
+.events > div > ul li a {
   color: inherit;
   text-decoration: none;
 }
 
-.release-notes #see-more-btn {
+.events #see-more-btn {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.release-notes #see-more-btn a {
+.events #see-more-btn a {
   color: inherit;
 }
 

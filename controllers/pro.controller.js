@@ -10,6 +10,13 @@ const razorpayInstance = new Razorpay({
 })
 
 module.exports.showCase = asyncHandler(async (req, res) => {
+  const { userId } = req.user
+
+  if (!userId) {
+    res.redirect('/auth')
+    return
+  }
+
   res.render('unauthorized')
 })
 

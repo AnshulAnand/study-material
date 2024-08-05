@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/pdfviewer.css" />
     <link rel="stylesheet" href="/css/_theme.css" />
-    <title>Document</title>
+    <title>Document id: <%- data.id %></title>
   </head>
   <body>
     <nav class="nav">
@@ -27,7 +27,9 @@
         </div>
         <div class="pages">
           <span>Page:</span>
-          <span id="page_num">-</span>
+          <form id="form" action="">
+            <input type="number" name="curPage" id="curPage" value="1" />
+          </form>
           <span>/</span>
           <span id="page_count">-</span>
         </div>
@@ -51,6 +53,16 @@
         canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d')
 
+      const input = document.getElementById('curPage')
+      const form = document.getElementById('form')
+      form.addEventListener('submit', handleSubmit)
+
+      function handleSubmit(event) {
+        event.preventDefault()
+        console.log(parseInt(input.value))
+        renderPage(parseInt(input.value))
+      }
+
       function renderPage(num) {
         pageRendering = true
         pdfDoc.getPage(num).then(page => {
@@ -71,7 +83,7 @@
             }
           })
         })
-        document.getElementById('page_num').textContent = num
+        input.value = num
       }
 
       function queueRenderPage(num) {
@@ -80,31 +92,31 @@
       }
 
       function onPrevPage() {
-        if (pageNum <= 1) return
-        pageNum--
-        queueRenderPage(pageNum)
+        if (input.value <= 1) return
+        input.value = parseInt(input.value) - 1
+        queueRenderPage(parseInt(input.value))
       }
 
       function onNextPage() {
-        if (pageNum >= pdfDoc.numPages) return
-        pageNum++
-        queueRenderPage(pageNum)
+        if (input.value >= pdfDoc.numPages) return
+        input.value = parseInt(input.value) + 1
+        queueRenderPage(parseInt(input.value))
       }
 
       function zoomOut() {
         scale -= 0.1
-        renderPage(pageNum)
+        renderPage(parseInt(input.value))
       }
 
       function zoomIn() {
         scale += 0.1
-        renderPage(pageNum)
+        renderPage(parseInt(input.value))
       }
 
       pdfjsLib.getDocument(`/documents/${id}.pdf`).promise.then(doc => {
         pdfDoc = doc
         document.getElementById('page_count').textContent = doc.numPages
-        renderPage(pageNum)
+        renderPage(parseInt(input.value))
       })
     </script>
   </body>

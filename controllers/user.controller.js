@@ -46,7 +46,7 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
 
     res.cookie('jwt', JWT, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000,
     })
 
@@ -80,7 +80,7 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
   res
     .cookie('jwt', JWT, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000,
     })
     .redirect('/')

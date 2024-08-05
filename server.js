@@ -27,7 +27,7 @@ app.get(
   asyncHandler(async (req, res) => {
     const user = req.user
     const foundUser = await UserModel.findById(user.userId).exec()
-    data = { ...user, payment: foundUser.payment }
+    data = { ...user, payment: foundUser?.payment }
     console.log({ data })
     res.render('home', data)
   })
@@ -42,5 +42,6 @@ app.use(errorHandler)
 
 app.listen(PORT, () => {
   logger.info(`Server started on port ${PORT}`)
+  logger.info(`-----Change test env file if in dev mode-----`)
   logEvents(`Server started on port ${PORT}`, 'logs.txt')
 })
