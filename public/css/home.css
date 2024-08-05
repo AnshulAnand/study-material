@@ -316,7 +316,11 @@ footer > .container > p {
 }
 
 @media only screen and (max-width: 600px) {
+  .testimonial-section > .container {
+    padding-inline: 10px;
+  }
   .testimonial-section > .container > div {
     flex-direction: column;
+    margin-inline: 0px;
   }
 }
