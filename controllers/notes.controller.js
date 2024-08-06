@@ -21,7 +21,6 @@ module.exports.semester = asyncHandler(async (req, res) => {
 module.exports.subject = asyncHandler(async (req, res) => {
   const subject = req.params.subject
   const path = req.originalUrl
-  console.log({ path })
   data = { subject: subject }
   res.render(`${path.slice(1)}`)
 })
