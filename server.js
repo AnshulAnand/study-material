@@ -44,6 +44,5 @@ app.use(errorHandler)
 
 app.listen(PORT, () => {
   logger.info(`Server started on port ${PORT}`)
-  logger.info(`-----Change test env file if in dev mode-----`)
   logEvents(`Server started on port ${PORT}`, 'logs.txt')
 })

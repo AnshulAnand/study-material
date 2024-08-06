@@ -5,11 +5,18 @@ const jwt = require('jsonwebtoken')
 const UserModel = require('../models/user.model')
 const asyncHandler = require('express-async-handler')
 
-module.exports.auth = (req, res) => {
+module.exports.auth = asyncHandler(async (req, res) => {
+  const { userId } = req.user
+
+  if (userId) {
+    res.redirect('/')
+    return
+  }
+
   const link = getGoogleOAuthURL()
   data = { link: link }
   res.render('auth', data)
-}
+})
 
 module.exports.googleAuth = asyncHandler(async (req, res) => {
   // get code from qs
@@ -45,7 +52,7 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
     res.cookie('jwt', JWT, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     })
 
     res.redirect('/')
@@ -79,7 +86,7 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
     .cookie('jwt', JWT, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     })
     .redirect('/')
 })

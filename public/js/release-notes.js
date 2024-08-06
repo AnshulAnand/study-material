@@ -10,3 +10,5 @@ function myFunction() {
 }
 
 setInterval(myFunction, 3500)
+
+myFunction()

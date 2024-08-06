@@ -3,23 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404</title>
+    <title>Coming soon...</title>
     <style>
-      h1 {
-        font-size: 100px;
-      }
-      h2 {
-        font-size: 70px;
-      }
-      h1,
-      h2 {
-        text-align: center;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
         font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        background-image: url('/images/coming-soon.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .back {
+        margin-top: 20px;
+        margin-left: 20px;
+        padding: 10px 15px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 999px;
+        text-decoration: none;
+        gap: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .back:hover {
+        background-color: rgba(0, 0, 0, 0.2);
       }
     </style>
   </head>
   <body>
-    <h1>404 :(</h1>
-    <h2>This page does not exist</h2>
+    <a href="/" class="back">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        class="bi bi-arrow-left"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+        />
+      </svg>
+      GO BACK
+    </a>
   </body>
 </html>

@@ -17,6 +17,22 @@ module.exports.showCase = asyncHandler(async (req, res) => {
     return
   }
 
+  const foundUser = await UserModel.findById(userId).exec()
+
+  if (!foundUser) {
+    res.clearCookie('jwt', { httpOnly: true })
+    res.sendStatus(204)
+    return
+  }
+
+  const date1 = dayjs(dayjs().format('YYYY-MM-DD'))
+  const dateDiff = date1.diff(foundUser.lastPayment, 'day')
+
+  if (foundUser.payment && dateDiff < 120) {
+    res.redirect('/')
+    return
+  }
+
   res.render('unauthorized')
 })
 
