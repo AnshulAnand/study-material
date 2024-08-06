@@ -27,10 +27,8 @@ module.exports.googleAuth = asyncHandler(async (req, res) => {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   })
   const { id_token, access_token } = result.data
-  console.log({ id_token, access_token })
   // get user with tokens
   const user = jwt.decode(id_token)
-  console.log({ user })
   const duplicateEmail = await UserModel.findOne({ email: user.email }).lean()
 
   if (duplicateEmail) {

@@ -28,10 +28,12 @@ app.get(
     const user = req.user
     const foundUser = await UserModel.findById(user.userId).exec()
     data = { ...user, payment: foundUser?.payment }
-    console.log({ data })
     res.render('home', data)
   })
 )
+
+app.get('/privacy', (req, res) => res.render('privacy'))
+app.get('/tos', (req, res) => res.render('tos'))
 
 app.use('/view-pdf', require('./routes/pdfviewer.routes'))
 app.use('/auth', require('./routes/user.routes'))

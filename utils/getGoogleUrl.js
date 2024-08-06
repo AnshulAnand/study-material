@@ -11,9 +11,7 @@ function getGoogleOAuthURL() {
       'https://www.googleapis.com/auth/userinfo.email',
     ].join(' '),
   }
-  console.log({ options })
   const qs = new URLSearchParams(options)
-  console.log({ qs: qs.toString() })
   return `${rootUrl}?${qs.toString()}`
 }
 module.exports = getGoogleOAuthURL
