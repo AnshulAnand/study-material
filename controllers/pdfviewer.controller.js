@@ -21,7 +21,7 @@ module.exports.renderPdf = asyncHandler(async (req, res) => {
   const date1 = dayjs(dayjs().format('YYYY-MM-DD'))
   const dateDiff = date1.diff(foundUser.lastPayment, 'day')
 
-  if (dateDiff > 31) {
+  if (dateDiff > 120) {
     res.render('unauthorized')
     return
   }
