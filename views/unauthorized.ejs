@@ -42,67 +42,67 @@
           <li>Access notes of all semesters</li>
           <li>Previous year papers</li>
         </ul>
-        <form class="pay-form">
-          <input type="hidden" name="name" value="Pro" />
-          <input type="hidden" name="amount" value="249" />
-          <input type="hidden" name="description" value="Pro Buying" />
+        <form class="pay-form" id="pay-form">
+          <input type="hidden" id="name" name="name" value="Pro" />
+          <input type="hidden" id="amount" name="amount" value="249" />
+          <input
+            type="hidden"
+            id="description"
+            name="description"
+            value="Pro Buying"
+          />
           <input id="pay" type="submit" value="Pay Now" />
         </form>
       </div>
       <p>Already have pro? <a href="/auth">Try loging in again.</a></p>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      document.getElementById('pay-form').addEventListener('submit', payNow)
+
+      async function payNow(e) {
+        e.preventDefault()
+        const amount = document.getElementById('amount').value
+
+        // Create order by calling the server endpoint
+        const response = await fetch('/pro/create-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            amount,
+            currency: 'INR',
+            receipt: 'receipt#1',
+            notes: {},
+          }),
+        })
+
+        const order = await response.json()
+
+        // Open Razorpay Checkout
+        const options = {
+          key: order.key_id, // Replace with your Razorpay key_id
+          amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+          currency: 'INR',
+          name: order.name,
+          description: 'PRO Subscription',
+          order_id: order.order_id, // This is the order_id created in the backend
+          callback_url: '/pro/verify', // Your success URL
+          prefill: {
+            name: order.name,
+            email: order.email,
+            contact: '',
+          },
+          theme: {
+            color: '#F37254',
+          },
+        }
+
+        const rzp = new Razorpay(options)
+        rzp.open()
+      }
+    </script>
   </body>
 </html>
-
-<!--Inside index.html -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-  $(document).ready(function () {
-    $('.pay-form').submit(function (e) {
-      e.preventDefault()
-
-      var formData = $(this).serialize()
-
-      $.ajax({
-        url: '/pro/create-order',
-        type: 'POST',
-        data: formData,
-        success: function (res) {
-          if (res.success) {
-            var options = {
-              key: '' + res.key_id + '',
-              amount: '' + res.amount + '',
-              currency: 'INR',
-              name: '' + res.product_name + '',
-              description: '' + res.description + '',
-              image: 'https://dummyimage.com/600x400/000/fff',
-              order_id: '' + res.order_id + '',
-              handler: function (response) {
-                window.open('/', '_self')
-              },
-              prefill: {
-                contact: '' + res.contact + '',
-                name: '' + res.name + '',
-                email: '' + res.email + '',
-              },
-              notes: {
-                description: '' + res.description + '',
-              },
-              theme: {
-                color: '#2300a3',
-              },
-            }
-            var razorpayObject = new Razorpay(options)
-            razorpayObject.on('payment.failed', function (response) {
-              alert('Payment Failed')
-            })
-            razorpayObject.open()
-          } else {
-            alert(res.msg)
-          }
-        },
-      })
-    })
-  })
-</script>

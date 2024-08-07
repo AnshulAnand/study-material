@@ -36,7 +36,7 @@ module.exports.showCase = asyncHandler(async (req, res) => {
   res.render('unauthorized')
 })
 
-module.exports.createOrder = async (req, res) => {
+module.exports.createOrder = asyncHandler(async (req, res) => {
   const { userId } = req.user
 
   if (!userId) {
@@ -52,12 +52,13 @@ module.exports.createOrder = async (req, res) => {
     return
   }
 
-  const amount = req.body.amount * 100
+  const { amount, currency, receipt, notes } = req.body
 
   const options = {
-    amount: amount,
-    currency: 'INR',
-    receipt: 'anandanshul001@gmail.com',
+    amount: amount * 100,
+    currency,
+    receipt,
+    notes,
   }
 
   razorpayInstance.orders.create(options, (err, order) => {
@@ -74,11 +75,55 @@ module.exports.createOrder = async (req, res) => {
         name: foundUser.name || 'Unknown',
         email: foundUser.email || 'Unknown',
       })
-      foundUser.payment = true
-      foundUser.lastPayment = dayjs().format('YYYY-MM-DD')
-      foundUser.save()
     } else {
       res.status(400).send({ success: false, msg: 'Something went wrong!' })
     }
   })
-}
+})
+
+module.exports.verify = asyncHandler(async (req, res) => {
+  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
+    req.body
+
+  if (!razorpay_order_id) {
+    res.json({ message: 'No ID provided' })
+    return
+  }
+
+  const { userId } = req.user
+
+  if (!userId) {
+    res.status(400).json({ message: `User with ID: ${userId} not found` })
+    return
+  }
+
+  const foundUser = await UserModel.findById(userId).exec()
+
+  if (!foundUser) {
+    res.clearCookie('jwt', { httpOnly: true })
+    res.sendStatus(204)
+    return
+  }
+
+  paymentStatus = razorpayInstance.orders
+    .fetchPayments(razorpay_order_id)
+    .then(data => {
+      if (
+        data &&
+        data.items &&
+        data.items[0] &&
+        data.items[0].status === 'captured'
+      ) {
+        foundUser.payment = true
+        foundUser.lastPayment = dayjs().format('YYYY-MM-DD')
+        foundUser.save()
+      }
+
+      res.redirect('/')
+      return
+    })
+    .catch(err => {
+      res.redirect('/')
+      console.log(err)
+    })
+})

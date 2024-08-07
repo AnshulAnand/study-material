@@ -6,6 +6,10 @@ module.exports.events = asyncHandler(async (req, res) => {
 
 module.exports.semesters = asyncHandler(async (req, res) => {
   const branch = req.params.branch
+  if (!['csda', 'csiot', 'ecam'].includes(branch)) {
+    res.redirect('/')
+    return
+  }
   data = { branch: branch }
   res.render('semesters', data)
 })
