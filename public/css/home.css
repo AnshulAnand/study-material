@@ -294,6 +294,19 @@ footer > .container {
   text-align: center;
 }
 
+footer > .container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+footer > .container > div > a {
+  color: inherit;
+  text-decoration: none;
+}
+
 footer > .container > p {
   color: #fff;
   margin-bottom: 20px;
