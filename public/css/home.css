@@ -9,6 +9,20 @@ html {
   scroll-behavior: smooth;
 }
 
+.banner {
+  background-color: green;
+  padding: 20px;
+  text-align: center;
+}
+
+.banner P {
+  line-height: 1.7rem;
+}
+
+.banner a {
+  color: inherit;
+}
+
 .hero-section {
   background-color: var(--background);
   display: flex;
@@ -303,7 +317,7 @@ footer > .container > div {
 }
 
 footer > .container > div > a {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -325,6 +339,9 @@ footer > .container > p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  footer > .container > div {
+    flex-direction: column;
   }
 }
 

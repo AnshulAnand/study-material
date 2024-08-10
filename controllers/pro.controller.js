@@ -20,8 +20,7 @@ module.exports.showCase = asyncHandler(async (req, res) => {
   const foundUser = await UserModel.findById(userId).exec()
 
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true })
-    res.sendStatus(204)
+    res.redirect('/auth')
     return
   }
 
@@ -47,8 +46,9 @@ module.exports.createOrder = asyncHandler(async (req, res) => {
   const foundUser = await UserModel.findById(userId).exec()
 
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true })
-    res.sendStatus(204)
+    // res.clearCookie('jwt', { httpOnly: true })
+    // res.sendStatus(204)
+    res.redirect('/auth')
     return
   }
 
@@ -100,8 +100,9 @@ module.exports.verify = asyncHandler(async (req, res) => {
   const foundUser = await UserModel.findById(userId).exec()
 
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true })
-    res.sendStatus(204)
+    // res.clearCookie('jwt', { httpOnly: true })
+    // res.sendStatus(204)
+    res.redirect('/auth')
     return
   }
 

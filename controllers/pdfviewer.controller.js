@@ -8,13 +8,15 @@ module.exports.renderPdf = asyncHandler(async (req, res) => {
   const foundUser = await UserModel.findById(userId).exec()
 
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true })
-    res.sendStatus(204)
+    // res.clearCookie('jwt', { httpOnly: true })
+    // res.status(204)
+    res.redirect('/pro')
     return
   }
 
   if (!foundUser.payment) {
-    res.render('unauthorized')
+    // res.render('unauthorized')
+    res.redirect('/pro')
     return
   }
 
@@ -22,7 +24,7 @@ module.exports.renderPdf = asyncHandler(async (req, res) => {
   const dateDiff = date1.diff(foundUser.lastPayment, 'day')
 
   if (dateDiff > 120) {
-    res.render('unauthorized')
+    res.redirect('/pro')
     return
   }
 
