@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/pdfviewer.css" />
     <link rel="stylesheet" href="/css/_theme.css" />
-    <title>Document id: <%- data.id %></title>
+    <title>PDF ID: <%- data.id %></title>
   </head>
   <body>
     <nav class="nav">
@@ -49,7 +49,7 @@
         pageNum = 1,
         pageRendering = false,
         pageNumPending = null,
-        scale = 1,
+        scale = 1.5,
         canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d')
 

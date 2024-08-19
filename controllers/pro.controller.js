@@ -52,12 +52,12 @@ module.exports.createOrder = asyncHandler(async (req, res) => {
     return
   }
 
-  const { amount, currency, receipt, notes } = req.body
+  const { amount, currency, notes } = req.body
 
   const options = {
     amount: amount * 100,
     currency,
-    receipt,
+    receipt: foundUser._id,
     notes,
   }
 
@@ -85,6 +85,8 @@ module.exports.verify = asyncHandler(async (req, res) => {
   const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
     req.body
 
+  // console.log({ razorpay_payment_id, razorpay_order_id, razorpay_signature })
+
   if (!razorpay_order_id) {
     res.json({ message: 'No ID provided' })
     return
@@ -108,7 +110,8 @@ module.exports.verify = asyncHandler(async (req, res) => {
 
   paymentStatus = razorpayInstance.orders
     .fetchPayments(razorpay_order_id)
-    .then(data => {
+    .then(async data => {
+      // console.log(data)
       if (
         data &&
         data.items &&
@@ -117,9 +120,9 @@ module.exports.verify = asyncHandler(async (req, res) => {
       ) {
         foundUser.payment = true
         foundUser.lastPayment = dayjs().format('YYYY-MM-DD')
-        foundUser.save()
+        // console.log(foundUser)
+        await foundUser.save()
       }
-
       res.redirect('/')
       return
     })
@@ -127,4 +130,8 @@ module.exports.verify = asyncHandler(async (req, res) => {
       res.redirect('/')
       console.log(err)
     })
+
+  // console.log(foundUser)
+  // await foundUser.save()
+  // res.redirect('/')
 })

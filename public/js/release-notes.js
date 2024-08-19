@@ -1,4 +1,7 @@
-arr = ['Start of our platform, gpamaster.in']
+arr = [
+  'Start of our platform, gpamaster.in',
+  'Independence Day Celebration on 15th August 2024',
+]
 
 let i = 0,
   li = document.getElementById('link')

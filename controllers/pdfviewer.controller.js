@@ -24,6 +24,8 @@ module.exports.renderPdf = asyncHandler(async (req, res) => {
   const dateDiff = date1.diff(foundUser.lastPayment, 'day')
 
   if (dateDiff > 120) {
+    foundUser.payment = false
+    await foundUser.save()
     res.redirect('/pro')
     return
   }
